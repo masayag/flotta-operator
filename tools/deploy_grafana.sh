@@ -114,6 +114,7 @@ curl -X POST --insecure -H "Content-Type: application/json" -d @$request_body "$
 uninstall_grafana() {
     kubectl delete grafanadatasource -n flotta flotta-datasource
     kubectl delete grafana -n flotta grafana
+    kubectl delete clusterserviceversion -n flotta -l operators.coreos.com/grafana-operator.flotta=
     kubectl delete subscription -n flotta grafana-operator
     kubectl delete operatorgroup -n flotta grafana-operator
 }
